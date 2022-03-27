@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ApolloClient from "apollo-boost"; 
+import { ApolloProvider } from "@apollo/react-hooks";
+import { PokemonList, PokemonDetail, MyPokemon } from './pages';
 
 function App() {
+  const client = new ApolloClient({
+    uri: 'https://graphql-pokeapi.graphcdn.app'
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Routes>
+            <Route exact path="/" element={<PokemonList/>} />
+            <Route exact path="/pokemon" element={<PokemonDetail/>} />
+            <Route path="/mypokemon" element={<MyPokemon/>} />
+        </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
     </div>
   );
 }
