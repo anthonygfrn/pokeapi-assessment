@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Dropdown = ({ display, datas, type }) => {
+export const Menu = ({ display, datas, type }) => {
   switch (type) {
     case "Types":
       datas = datas.map((data) => data.type.name);
@@ -15,16 +15,16 @@ export const Dropdown = ({ display, datas, type }) => {
 
   if (display) {
     return (
-      <DropdownStyle>
+      <MenuStyle>
         {datas.map((data) => {
           return <Data key={data}>{data}.</Data>;
         })}
-      </DropdownStyle>
+      </MenuStyle>
     );
   } else return null;
 };
 
-const DropdownStyle = styled.div`
+const MenuStyle = styled.div`
   border: 2px solid black;
   border-radius: 12px;
   margin: 0 10px 5px;
@@ -33,6 +33,7 @@ const DropdownStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
 const Data = styled.div`
   font-size: 14px;
   font-weight: 500;

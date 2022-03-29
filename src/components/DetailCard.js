@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dropdown } from "./Dropdown";
+import { Menu } from "./Menu";
 import styled from "@emotion/styled";
 
 export const DetailCard = ({ data, handleButton, buttonText }) => {
@@ -23,12 +23,12 @@ export const DetailCard = ({ data, handleButton, buttonText }) => {
       </CardImage>
 
       <CardType onClick={() => setDisplayTypes(!displayTypes)}>Types</CardType>
-      <Dropdown display={displayTypes} datas={data.types} type={"Types"} />
+      <Menu display={displayTypes} datas={data.types} type={"Types"} />
 
       <CardType className="type" onClick={() => setDisplayMoves(!displayMoves)}>
         Moves
       </CardType>
-      <Dropdown display={displayMoves} datas={data.moves} type={"Moves"} />
+      <Menu display={displayMoves} datas={data.moves} type={"Moves"} />
 
       <Throw onClick={() => handleButton(data)}>{buttonText}</Throw>
     </CardContainer>
@@ -38,20 +38,24 @@ export const DetailCard = ({ data, handleButton, buttonText }) => {
 const CardContainer = styled.div`
   width: 70%;
   max-width: 500px;
-  background-color: #ffffff;
+  background-color: #b1d9ea;
+  background-image: linear-gradient(62deg, #b1d9ea 0%, #79caf9 100%);
   padding: 5px;
   margin: 20px;
+  margin-top: 80px;
   border-radius: 15px;
   @media (max-width: 768px) {
     margin-top: 80px;
   }
 `;
+
 const CardTitle = styled.div`
   font-size: large;
   padding: 10px;
   margin: 5px;
   text-transform: uppercase;
 `;
+
 const CardImage = styled.div`
   background-size: contain;
   justify-content: center;
@@ -70,6 +74,11 @@ const CardType = styled.div`
   margin: 5px;
   padding: 5px;
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  &:hover {
+    color: #4dad5b;
+  }
 `;
 
 const Throw = styled.div`

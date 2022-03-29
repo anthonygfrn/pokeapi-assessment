@@ -102,17 +102,11 @@ const Pagination = styled.div`
   }
 
   page {
-    background-color: red;
     border-radius: 50%;
     padding: 5px 15px;
     color: black;
     margin: 0 15px;
     margin-top: 10px;
-  }
-
-  page:hover {
-    background: #0bab64;
-    cursor: pointer;
   }
 
   div {

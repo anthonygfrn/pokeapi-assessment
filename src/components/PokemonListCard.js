@@ -24,7 +24,7 @@ const Card = styled.div`
   flex: 1 0 400px;
   max-width: 400px;
   overflow: hidden;
-  background: #fff;
+  background: url("./grass.png");
   color: #000;
   border-radius: 15px;
   box-shadow: 3px 2px 14px hsla(0, 0%, 100%, 0.2);
@@ -51,6 +51,7 @@ const CardImage = styled.img`
   background-repeat: no-repeat;
   background-position: 50%;
   justify-content: center;
+  margin-left: 5px;
 `;
 
 const CardContent = styled.div`
@@ -58,15 +59,18 @@ const CardContent = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 1rem;
+  margin-left: 5px;
 `;
 const CardTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
+  margin-left: 5px;
 `;
 const CardSnippet = styled.p`
   .card__snippet,
   .card__title {
     margin-bottom: 0.5rem;
   }
+  margin-left: 5px;
 `;
