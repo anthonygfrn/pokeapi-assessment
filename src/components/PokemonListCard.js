@@ -40,9 +40,8 @@ const Card = styled.div`
       }
       @media (max-width: 768px) {
         overflow: hidden;
-        max-width: 200px;
+        max-width: 220px;
         align-content: center;
-        margin-right: 125px;
       }
 `
 

@@ -1,41 +1,83 @@
-/** @jsxImportSource @emotion/react */
-
-import { useState } from "react"
-import { Dropdown } from "./Dropdown"
-import { CardStyle } from "../styles/components/CardStyle"
+import { useState } from "react";
+import { Dropdown } from "./Dropdown";
+import styled from "@emotion/styled";
 
 export const DetailCard = ({data, handleButton, buttonText}) => {
     const [displayTypes, setDisplayTypes] = useState(false)
     const [displayMoves, setDisplayMoves] = useState(false)
 
     return(
-        <div css={CardStyle}>
-            <div className="name">
+        <CardContainer>
+            <CardTitle>
                 {data.unique_name ? 
                 (<strong>{data.unique_name} ({data.name})</strong>) 
                 : 
                 (<strong>{data.name}</strong>)
                 }
-            </div>
+            </CardTitle>
 
-            <div className="picture">
+            <CardImage>
                 <img src={data.sprites.front_default} alt=""/>
-            </div>
+            </CardImage>
 
-            <div className="type" onClick={()=>setDisplayTypes(!displayTypes)}>
+            <CardType onClick={()=>setDisplayTypes(!displayTypes)}>
                 Types
-            </div>
+            </CardType>
             <Dropdown display={displayTypes} datas={data.types} type={'Types'}/>
             
-            <div className="type" onClick={()=>setDisplayMoves(!displayMoves)}>
+            <CardType className="type" onClick={()=>setDisplayMoves(!displayMoves)}>
                 Moves
-            </div>
+            </CardType>
             <Dropdown display={displayMoves} datas={data.moves} type={'Moves'}/>
 
-            <div className="throw-ball" onClick={()=>handleButton(data)}>
+            <Throw onClick={()=>handleButton(data)}>
                 {buttonText}
-            </div>
-        </div>
+            </Throw>
+        </CardContainer>
     )
 }
+
+const CardContainer = styled.div`
+    width: 70%;
+    max-width: 500px;
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 20px;
+    border-radius: 15px;
+`
+const CardTitle = styled.div `
+    font-size:large;
+    padding: 10px;
+    margin: 5px;
+    text-transform: uppercase;
+`
+const CardImage = styled.div`
+     background-size: contain;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 5px;
+    height: 30vh;
+    img {
+        height:100%;
+    }
+`
+
+    const CardType = styled.div `
+        border: 2px solid black;
+        border-radius: 12px;
+        margin: 5px;
+        padding: 5px;
+        cursor:pointer;
+    `
+
+    const Throw = styled.div `
+        border: 2px solid black;
+        border-radius: 12px;
+        margin: 15px;
+        padding: 10px;
+        background-color: #4dad5b;
+        cursor:pointer;
+        text-align: center;
+`
 

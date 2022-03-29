@@ -68,9 +68,12 @@ const Cards = styled.div`
     justify-content: space-evenly; 
     gap: 1.5rem;
     padding: 3.5rem;
-    cursor:pointer;
+    cursor: pointer;
     margin: 30px 200px 0 200px;
     border-color: white;
+    @media (max-width: 768px) {
+        margin: 30px 0 0 0;
+      }
 `;
 
 const Pagination = styled.div`

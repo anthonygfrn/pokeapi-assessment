@@ -1,5 +1,6 @@
-import { useState } from "react"
-import { validateDuplicate } from "../util"
+import { useState } from "react";
+import { validateDuplicate } from "../util";
+import styled from "@emotion/styled";
 
 export const PokemonNickName = ({pokemon, setUniqueName, setDisplayModal}) => {
     const [name, setName] = useState("")
@@ -28,7 +29,7 @@ export const PokemonNickName = ({pokemon, setUniqueName, setDisplayModal}) => {
     }
 
     return (
-        <div className="unique-name">
+        <NickName>
             <div className="picture">
                 <img src={pokemon.sprites.front_default} alt=""/>
             </div>
@@ -44,7 +45,48 @@ export const PokemonNickName = ({pokemon, setUniqueName, setDisplayModal}) => {
                 />
                 <input id="input-submit" type="submit" value="Save"/>
             </form>
-            {error && (<div className="error">{error}</div>)}
-        </div>
+            {error && (<Error>{error}</Error>)}
+        </NickName>
     )
 }
+
+ const NickName = styled.div` 
+    display:flex;
+    width:70%;
+    flex-direction:column;
+    align-items:center;
+    form {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        input {
+            margin:3px 0;
+        }
+    }
+    div {
+        margin:5px 0;
+    }
+
+    #input-name {
+        border-radius: 25px;
+        border: 2px solid;
+        height: 20px;
+        padding: 5px;
+        text-align:center;
+    }
+
+    #input-submit {
+        background: #4dad5b;
+        border: 2px solid;
+        border-radius: 25px;
+        height: 30px;
+        width:75%;
+        cursor: pointer;
+    }
+`
+
+
+
+ const Error = styled.div`
+    color: red;
+ `

@@ -1,3 +1,5 @@
+import styled from "@emotion/styled";
+
 export const Dropdown = ({display, datas, type}) => {
     switch (type) {
         case "Types":
@@ -13,15 +15,35 @@ export const Dropdown = ({display, datas, type}) => {
 
     if (display) {
         return (
-            <div className="dropdown">
+            <DropdownStyle>
                 {datas.map(data => {
                     return (
-                        <div className="data" key={data}>
-                            {data}.
-                        </div>
+                        <Data key={data}>
+                            {data}. 
+                        </Data>
                     )
                 })}
-            </div>
+            </DropdownStyle>
         )
     } else return null
 }
+
+const DropdownStyle = styled.div`
+border: 2px solid black;
+border-radius: 12px;
+margin:0 10px 5px;
+padding: 5px;
+background-color: #4dad5b;
+display: flex;
+flex-wrap: wrap;
+`
+const Data = styled.div `
+    font-size: 14px;
+    font-weight: 500;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 12px;
+    &:first-letter {
+        text-transform: uppercase;
+    }
+`

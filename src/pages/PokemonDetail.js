@@ -1,12 +1,11 @@
-/** @jsxImportSource @emotion/react */
 import { useQuery } from "@apollo/react-hooks";
 import { GET_POKEMON } from '../graphql/index';
 import { useParams } from "react-router-dom";
 import { DetailCard } from '../components/DetailCard';
-import { DetailPageStyle } from "../styles/pages/DetailPageStyle";
 import { Spin } from "antd";
 import { useState } from 'react';
 import { CatchModal } from "../components/CatchModal"
+import styled from "@emotion/styled";
 
 export function PokemonDetail() {
     let {name} = useParams()
@@ -45,7 +44,7 @@ export function PokemonDetail() {
     if (error) return `${error}, please try to refresh the page`;
 
     return (
-        <div css={DetailPageStyle}>
+        <DetailPageStyle>
             {data.pokemon.id ? 
             (
                 <DetailCard data={data.pokemon} buttonText={'Throw Pokeball!'} handleButton={handleThrowPokeball}/>
@@ -64,9 +63,15 @@ export function PokemonDetail() {
                 isLoading={isLoading}
                 pokemon={data.pokemon}
             />
-        </div>
+        </DetailPageStyle>
     )
 }
 
-
-
+const DetailPageStyle = styled.div`
+    height:100%;
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+`

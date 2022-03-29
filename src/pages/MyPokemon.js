@@ -1,15 +1,13 @@
-/** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import { Empty } from "../components/Empty";
-import { DetailCard } from "../components/DetailCard"
+import { DetailCard } from "../components/DetailCard";
 import styled from "@emotion/styled";
-import { MyPokemonPageStyle } from "../styles/pages/MyPokemonsStyle";
 
 export function MyPokemon() {
-    const pokedex = localStorage.getItem("pokedex")
-    const [temp, setTemp] = useState(pokedex ? JSON.parse(pokedex) : [])
-    const [displayModal, setDisplayModal] = useState(false)
-    const [release, setRelease] = useState("")
+    const pokedex = localStorage.getItem("pokedex");
+    const [temp, setTemp] = useState(pokedex ? JSON.parse(pokedex) : []);
+    const [displayModal, setDisplayModal] = useState(false);
+    const [release, setRelease] = useState("");
     const modal = document.getElementById("confirm-release");
 
     if (modal) {
@@ -35,7 +33,6 @@ export function MyPokemon() {
     }
     return (
         <PokemonListContainer>
-            <div css={MyPokemonPageStyle}>
             <Cards>
             {
                 temp.map(data => {
@@ -45,30 +42,30 @@ export function MyPokemon() {
                 })
             }
             </Cards>
-            <div id="confirm-release" className="modal">
-                <div className="modal-content">
+            <Modal id="confirm-release" >
+                <ModalContent>
                     <p>Release {release.unique_name}?</p>
-                    <div className="confirmation">
-                        <div className="confirm" onClick={confirmRelease}>
+                    <Confirmation>
+                        <Confirm onClick={confirmRelease}>
                             Release
-                        </div>
-                        <div className="cancel" onClick={()=>setDisplayModal(false)}>
+                        </Confirm>
+                        <Cancel onClick={()=>setDisplayModal(false)}>
                             Cancel
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+                        </Cancel>
+                    </Confirmation>
+                </ModalContent>
+            </Modal>
         </PokemonListContainer>
     )
 }
 
 const PokemonListContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    flex-grow: 1;
-    margin-top: 10px;
+    height:100%;
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 `;
 
 const Cards = styled.div`
@@ -81,3 +78,70 @@ const Cards = styled.div`
     margin: 30px 200px 0 200px;
     border-color: white;
 `;
+
+const Modal = styled.div` 
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: #red; /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+`
+
+ const ModalContent = styled.div`
+    background-color: #e3e5dd;
+    margin: auto;
+    padding: 10px 10px 30px;
+    border: 2px solid black;
+    width: 80%;
+    max-width: 600px;
+    max-height: 500px;
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    p {
+        text-align: center;
+    }
+    `
+
+const Confirmation = styled.div`
+    display:flex;
+    flex-direction: row;
+    width:75%;
+    justify-content: space-between;
+
+    confirm {
+        border: 2px solid black;
+        padding: 5px 10px;
+        background-color: red;
+        cursor:pointer;
+        border-radius: 12px;
+    }
+`
+
+const Confirm = styled.div`
+    border: 2px solid black;
+    border-radius: 12px;
+    margin: 15px;
+    padding: 10px;
+    background-color: red;
+    cursor:pointer;
+`
+
+const Cancel = styled.div`
+    border: 2px solid black;
+    border-radius: 12px;
+    margin: 15px;
+    padding: 10px;
+    background-color: #4dad5b;
+    cursor:pointer;
+`
