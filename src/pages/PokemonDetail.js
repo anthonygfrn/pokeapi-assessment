@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { GET_POKEMON } from "../graphql/index";
 import { useParams } from "react-router-dom";
 import { DetailCard } from "../components/DetailCard";
-import { Spin } from "antd";
+import { Loader } from "../components/Loader";
 import { useState } from "react";
 import { CatchModal } from "../components/CatchModal";
 import styled from "@emotion/styled";
@@ -39,7 +39,7 @@ export function PokemonDetail() {
     return chance >= 0.5;
   };
 
-  if (loading) return <Spin />;
+  if (loading) return <Loader />;
 
   if (error) return `${error}, please try to refresh the page`;
 

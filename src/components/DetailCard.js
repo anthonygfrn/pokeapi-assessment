@@ -42,6 +42,9 @@ const CardContainer = styled.div`
   padding: 5px;
   margin: 20px;
   border-radius: 15px;
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
 `;
 const CardTitle = styled.div`
   font-size: large;

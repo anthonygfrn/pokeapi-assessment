@@ -31,7 +31,7 @@ const Card = styled.div`
   text-decoration: none;
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
-  padding: 1rem;
+  padding: 0.5rem;
   &:hover {
     transform: translateY(-1rem);
     box-shadow: 2px 3px 18px hsla(0, 0%, 100%, 0.4);
@@ -45,8 +45,8 @@ const Card = styled.div`
 
 const CardImage = styled.img`
   flex: 0 0 180px;
-  max-height: 250px;
-  max-width: 250px;
+  max-height: 200px;
+  max-width: 200px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;

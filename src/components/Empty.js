@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export function Empty() {
   return (
     <EmptyStyles>
-      <EmptyText>No Pokemon Yet</EmptyText>
+      <EmptyText>Currently, you don't have a Pokemon</EmptyText>
     </EmptyStyles>
   );
 }
